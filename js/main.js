@@ -77,33 +77,37 @@
     //     });
     // }, {offset: '80%'});
 
-    
-    // Skills Animation
+
+ // Skills Animation
 function animateSkills() {
     $('.progress .progress-bar').each(function () {
         $(this).css('width', $(this).attr('aria-valuenow') + '%');
     });
 }
 
-// Waypoint trigger for Skills
-$('.skills').waypoint(function (direction) {
-    if (direction === 'down' || direction === 'up') {
-        animateSkills();
-        this.destroy(); // Destroy waypoint after animation to avoid re-trigger
-    }
-}, { offset: '80%' });
+// Waypoint trigger for Skills on scroll
+if ($('.skills').length) {
+    var waypoint = new Waypoint({
+        element: document.querySelector('.skills'),
+        handler: function(direction) {
+            animateSkills();
+            this.destroy(); // Only once
+        },
+        offset: '80%'
+    });
+}
 
-// Also trigger immediately if Skills section is already visible on page load
+// ALSO trigger skills animation immediately if already visible on page load
 $(window).on('load', function () {
-    var scroll = $(window).scrollTop();
-    var skillsTop = $('.skills').offset().top;
-    var windowHeight = $(window).height();
-    if (scroll + windowHeight > skillsTop) {
-        animateSkills();
-    }
+    setTimeout(function() {
+        var windowHeight = $(window).height();
+        var scrollTop = $(window).scrollTop();
+        var skillsTop = $('.skills').offset().top;
+        if (scrollTop + windowHeight > skillsTop) {
+            animateSkills();
+        }
+    }, 300); // Small delay (300 milliseconds) to ensure page is fully ready
 });
-
-
 
 
 
