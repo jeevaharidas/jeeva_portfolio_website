@@ -1675,7 +1675,7 @@ a:not(.btn):focus {
     }
 }
 
- .progress-bar {
+ /* .progress-bar {
     width: 0%;
-    transition: width 0.2s ease;
-} 
+    transition: width 0s ease;
+}  */
