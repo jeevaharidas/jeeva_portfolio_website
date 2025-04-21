@@ -432,7 +432,7 @@ a:not(.btn):focus {
         font-size: 45px;
     }
     
-    
+
     .hero .hero-text h2 {
         font-size: 25px;
         height: 25px;
@@ -620,7 +620,7 @@ a:not(.btn):focus {
     width: 0px;
     background: #EF233C;
     border-radius: 10px;
-    transition: 0s;
+    transition: 1s;
 }
 
 .about .about-text a.btn {
@@ -1676,7 +1676,8 @@ a:not(.btn):focus {
     }
 }
 
- /* .progress-bar {
+ .progress-bar {
     width: 0%;
-    transition: width 0s ease;
-}  */
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+}  
