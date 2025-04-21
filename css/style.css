@@ -3,11 +3,10 @@
 /*******************************/
 
 
-
 /* Education Section */
 .education {
     background: #FFFFFF;
-    padding: 50px 0;
+    padding: 50px 0 15px 0 ;
 }
 .section-header p {
     color: #EF233C;
@@ -100,9 +99,9 @@ a {
     transition: .3s;
 }
 
-a:hover,
-a:active,
-a:focus {
+a:not(.btn):hover,
+a:not(.btn):active,
+a:not(.btn):focus {
     color: #EF233C;
     outline: none;
     text-decoration: none;
