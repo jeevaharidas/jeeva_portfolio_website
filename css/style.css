@@ -619,7 +619,7 @@ a:not(.btn):focus {
     width: 0px;
     background: #EF233C;
     border-radius: 10px;
-    transition: 2s;
+    transition: 0s;
 }
 
 .about .about-text a.btn {
