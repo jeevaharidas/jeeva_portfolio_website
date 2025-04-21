@@ -77,6 +77,7 @@
     //     });
     // }, {offset: '80%'});
 
+    
     // Skills Animation
 function animateSkills() {
     $('.progress .progress-bar').each(function () {
