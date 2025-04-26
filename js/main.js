@@ -70,46 +70,36 @@
     }
     
     
-    // // Skills
-    // $('.skills').waypoint(function () {
-    //     $('.progress .progress-bar').each(function () {
-    //         $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    //     });
-    // }, {offset: '80%'});
+    // Adjusted Skills Animation to ensure proper triggering
+    function animateSkills() {
+        $('.progress .progress-bar').each(function () {
+            $(this).css('width', $(this).attr('aria-valuenow') + '%');
+        });
+    }
 
+    // Waypoint trigger for Skills on scroll
+    if ($('.skills').length) {
+        var waypoint = new Waypoint({
+            element: document.querySelector('.skills'),
+            handler: function(direction) {
+                animateSkills();
+                this.destroy(); // Trigger only once
+            },
+            offset: '80%'
+        });
+    }
 
- // Skills Animation
-function animateSkills() {
-    $('.progress .progress-bar').each(function () {
-        $(this).css('width', $(this).attr('aria-valuenow') + '%');
+    // Trigger skills animation immediately if already visible on page load
+    $(window).on('load', function () {
+        setTimeout(function() {
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var skillsTop = $('.skills').offset().top;
+            if (scrollTop + windowHeight > skillsTop) {
+                animateSkills();
+            }
+        }, 100); // Reduced delay to ensure smoother experience
     });
-}
-
-// Waypoint trigger for Skills on scroll
-if ($('.skills').length) {
-    var waypoint = new Waypoint({
-        element: document.querySelector('.skills'),
-        handler: function(direction) {
-            animateSkills();
-            this.destroy(); // Only once
-        },
-        offset: '80%'
-    });
-}
-
-// ALSO trigger skills animation immediately if already visible on page load
-$(window).on('load', function () {
-    setTimeout(function() {
-        var windowHeight = $(window).height();
-        var scrollTop = $(window).scrollTop();
-        var skillsTop = $('.skills').offset().top;
-        if (scrollTop + windowHeight > skillsTop) {
-            animateSkills();
-        }
-    }, 300); // Small delay (300 milliseconds) to ensure page is fully ready
-});
-
-
 
 
     // Testimonials carousel
